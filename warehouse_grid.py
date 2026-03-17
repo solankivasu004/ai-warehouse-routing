@@ -1,3 +1,5 @@
+from robot import Robot, get_neighbors
+
 class WarehouseGrid:
     def __init__(self, width, height):
         self.width = width
@@ -21,6 +23,18 @@ class WarehouseGrid:
             print(" ".join(row))
 
 
+# ---- MAIN EXECUTION ----
 if __name__ == "__main__":
+    
+    # Create warehouse
     warehouse = WarehouseGrid(6,6)
     warehouse.display_grid()
+
+    # Create robot at start
+    robot = Robot((0,0))
+    
+    print("\nRobot position:", robot.get_position())
+
+    # Get possible moves
+    moves = get_neighbors(robot.get_position(), warehouse.grid)
+    print("Possible moves:", moves)
