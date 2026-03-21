@@ -1,4 +1,3 @@
-from robot import Robot, get_neighbors
 from astar import astar
 
 class WarehouseGrid:
@@ -28,7 +27,12 @@ if __name__ == "__main__":
     print("\nStart:", warehouse.start)
     print("Goal:", warehouse.goal)
 
-    path = astar(warehouse.grid, warehouse.start, warehouse.goal)
+    # Traffic (higher = more congestion)
+    traffic = {
+        (0, 3): 5,
+        (1, 5): 3
+    }
 
-    print("\nOptimal Path:", path)
-    
+    path = astar(warehouse.grid, warehouse.start, warehouse.goal, traffic)
+
+    print("\nOptimal Path with Traffic:", path)
