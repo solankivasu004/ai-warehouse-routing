@@ -33,14 +33,11 @@ def astar(grid, start, goal, traffic):
         for neighbor in neighbors:
             nx, ny = neighbor
 
-            # boundary check
             if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]):
 
-                # obstacle check
                 if grid[nx][ny] == "#":
                     continue
 
-                # traffic cost
                 traffic_cost = traffic.get(neighbor, 0)
 
                 tentative_g = g_score[current] + 1 + traffic_cost
