@@ -1,4 +1,4 @@
-from robot import Robot, get_neighbors
+from astar import astar
 
 class WarehouseGrid:
     def __init__(self, width, height):
@@ -23,18 +23,17 @@ class WarehouseGrid:
             print(" ".join(row))
 
 
-# ---- MAIN EXECUTION ----
 if __name__ == "__main__":
     
     # Create warehouse
     warehouse = WarehouseGrid(6,6)
     warehouse.display_grid()
 
-    # Create robot at start
-    robot = Robot((0,0))
-    
-    print("\nRobot position:", robot.get_position())
+    print("\nStart:", warehouse.start)
+    print("Goal:", warehouse.goal)
 
-    # Get possible moves
-    moves = get_neighbors(robot.get_position(), warehouse.grid)
-    print("Possible moves:", moves)
+    # Run A* algorithm
+    path = astar(warehouse.grid, warehouse.start, warehouse.goal)
+
+    print("\nOptimal Path:", path)
+    
