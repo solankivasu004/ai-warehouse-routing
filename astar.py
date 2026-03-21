@@ -1,7 +1,6 @@
 import heapq
 
 def heuristic(a, b):
-    # Manhattan distance
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 
@@ -38,11 +37,13 @@ def astar(grid, start, goal, traffic):
             if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]):
 
                 # obstacle check
-               if grid[nx][ny] == "#":
+                if grid[nx][ny] == "#":
                     continue
 
-               traffic_cost = traffic.get(neighbor, 0)
-               tentative_g = g_score[current] + 1 + traffic_cost
+                # traffic cost
+                traffic_cost = traffic.get(neighbor, 0)
+
+                tentative_g = g_score[current] + 1 + traffic_cost
 
                 if neighbor not in g_score or tentative_g < g_score[neighbor]:
                     g_score[neighbor] = tentative_g
