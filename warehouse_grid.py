@@ -24,15 +24,34 @@ if __name__ == "__main__":
     warehouse = WarehouseGrid(6, 6)
     warehouse.display_grid()
 
-    print("\nStart:", warehouse.start)
-    print("Goal:", warehouse.goal)
+    current_position = warehouse.start
+    goal = warehouse.goal
 
-    # Traffic (higher = more congestion)
+    # traffic simulation
     traffic = {
         (0, 3): 5,
         (1, 5): 3
     }
 
-    path = astar(warehouse.grid, warehouse.start, warehouse.goal, traffic)
+    print("\nStart:", current_position)
+    print("Goal:", goal)
 
-    print("\nOptimal Path with Traffic:", path)
+    step = 0
+
+    while current_position != goal:
+        print(f"\nStep {step}: Robot at {current_position}")
+
+        path = astar(warehouse.grid, current_position, goal, traffic)
+
+        if not path:
+            print("No path found!")
+            break
+
+        print("New Path:", path)
+
+        # move one step
+        current_position = path[0]
+
+        step += 1
+
+    print("\nReached Goal!")
