@@ -41,7 +41,8 @@ if __name__ == "__main__":
     while current_position != goal:
         print(f"\nStep {step}: Robot at {current_position}")
         # simulate changing traffic
-        if step == 3:
+        if step == 1:
+            print("Blocking column 1")
             for i in range(6):
                 warehouse.grid[i][1] = "#"
 
