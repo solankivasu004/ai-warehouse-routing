@@ -42,7 +42,8 @@ if __name__ == "__main__":
         print(f"\nStep {step}: Robot at {current_position}")
         # simulate changing traffic
         if step == 3:
-            traffic[(3, 1)] = 1000  # suddenly heavy traffic
+            traffic[(3,1)] = 1000  # suddenly heavy traffic
+            traffic[(4,1)] = 1000
 
         if step == 5:
             traffic[(4, 2)] = 50
