@@ -10,7 +10,9 @@ class WarehouseGrid:
         self.start = (0, 0)
         self.goal = (height - 1, width - 1)
 
-        self.obstacles = []
+        self.obstacles = [
+            (1,3),(2,3),(3,3),(4,3),(6,5),(7,5),(8,5)
+        ]
 
         for x, y in self.obstacles:
             self.grid[x][y] = "#"
@@ -21,7 +23,7 @@ class WarehouseGrid:
 
 
 if __name__ == "__main__":
-    warehouse = WarehouseGrid(6, 6)
+    warehouse = WarehouseGrid(10, 10)
     warehouse.display_grid()
 
     current_position = warehouse.start
@@ -41,10 +43,10 @@ if __name__ == "__main__":
     while current_position != goal:
         print(f"\nStep {step}: Robot at {current_position}")
         # simulate changing traffic
-        if step == 1:
-            print("Blocking column 1")
-            for i in range(6):
-                warehouse.grid[i][1] = "#"
+        if step == 2:
+            print("Blocking column 4")
+            for i in range(10):
+                warehouse.grid[i][4] = "#"
 
         path = astar(warehouse.grid, current_position, goal, traffic)
 
