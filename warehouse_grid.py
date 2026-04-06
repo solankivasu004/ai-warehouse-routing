@@ -44,10 +44,10 @@ if __name__ == "__main__":
         print(f"\nStep {step}: Robot at {current_position}")
         # simulate changing traffic
        if step == 1:
-           print("BLOCKING MAIN PATH")
-           # block the actual path robot will take
-           for cell in [(2,1), (3,1), (4,1)]:
-                warehouse.grid[cell[0]][cell[1]] = "#"
+           print("BLOCKING WALL")
+           
+           for j in range(10):
+                warehouse.grid[2][j] = "#"
 
         path = astar(warehouse.grid, current_position, goal, traffic)
 
